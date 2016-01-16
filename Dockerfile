@@ -1,5 +1,19 @@
-FROM base/archlinux
-RUN echo -e "[oracle]\nSigLevel = Optional TrustAll\nServer = http://linux.shikadi.net/arch/\$repo/\$arch/" >>/etc/pacman.conf
-RUN pacman --sync --refresh --noconfirm --noprogressbar --quiet && pacman --sync --noconfirm --noprogressbar --quiet oracle-instantclient-sqlplus
-ENV ORACLE_HOME /usr
-CMD sqlplus "system/password@${ORACLE_PORT_1521_TCP_ADDR}:${ORACLE_PORT_1521_TCP_PORT}/xe"
+FROM guywithnose/sqlplus
+MAINTAINER Carlos Castillo Alarcón
+
+RUN apt-get install vim
+
+RUN mkdir /usr/network
+COPY admin /usr/network/admin
+ENV TNS_ADMIN /usr/network/admin
+
+COPY workdir /usr/workdir
+
+VOLUME ["/usr/network/admin"]
+VOLUME ["/usr/workdir"]
+
+ENV USERNAME scott
+ENV NET_SERVICE_NAME XE
+ENV EDITOR=vi
+
+CMD cd /usr/workdir && sqlplus "${USERNAME}@${NET_SERVICE_NAME}"
