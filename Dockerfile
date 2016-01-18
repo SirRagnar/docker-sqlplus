@@ -1,8 +1,6 @@
 FROM guywithnose/sqlplus
 MAINTAINER Carlos Castillo Alarcón
 
-RUN apt-get install vim
-
 RUN mkdir /usr/network
 COPY admin /usr/network/admin
 ENV TNS_ADMIN /usr/network/admin
