@@ -14,4 +14,6 @@ ENV USERNAME scott
 ENV NET_SERVICE_NAME XE
 ENV EDITOR=vi
 
-CMD cd /usr/workdir && sqlplus "${USERNAME}@${NET_SERVICE_NAME}"
+WORKDIR "/usr/workdir"
+
+CMD sqlplus "${USERNAME}@${NET_SERVICE_NAME}"
