@@ -1,6 +1,6 @@
 ## SQL*Plus Docker image
 
-Forked from  forked from [guywithnose/docker-sqlplus](https://github.com/guywithnose/docker-sqlplus)
+Forked from [guywithnose/docker-sqlplus](https://github.com/guywithnose/docker-sqlplus)
 and inspired by [thriqon/docker-sqlplus](https://github.com/thriqon/docker-sqlplus).
 
 This is a modified SQL*Plus docker image i've done in order to be enable to
@@ -8,14 +8,14 @@ use my own [tnsnames.ora](https://docs.oracle.com/cd/B28359_01/network.111/b2831
 and a dir where I could put some scripts.
 
 Build it like this:
-`docker build . -t plus`
+`docker build . -t carloscastillo/docker-sqlplus`
 
 Connect to a running Oracle database like this
 
-`docker run --interactive -e USERNAME=username -e PASSWORD=password -e NET_SERVICE_NAME=XE -v /host/scripts/dir:/usr/workdir -v /host/oracle_home/network/admin:/usr/network/admin --net="host" plus`
+`docker run --interactive --rm -e USERNAME=username -e NET_SERVICE_NAME=XE -v /host/scripts/dir:/usr/workdir -v /host/oracle_home/network/admin:/usr/network/admin --net="host" carloscastillo/docker-sqlplus`
 
 If the target database is inside another container you can link it:
-`docker run --interactive --link database_container_name:name_of_database_host_in_tnsnames_dot_ora -e USERNAME=username -e PASSWORD=password -e NET_SERVICE_NAME=XE -v /host/scripts/dir:/usr/workdir -v /host/oracle_home/network/admin:/usr/network/admin plus`
+`docker run --interactive --rm --link database_container_name:name_of_database_host_in_tnsnames_dot_ora -e USERNAME=username -e NET_SERVICE_NAME=XE -v /host/scripts/dir:/usr/workdir -v /host/oracle_home/network/admin:/usr/network/admin carloscastillo/docker-sqlplus`
 
 Where:
 * _username_ is your user name.
