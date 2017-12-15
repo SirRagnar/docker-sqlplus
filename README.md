@@ -24,3 +24,6 @@ Where:
 * _/host/oracle_home/network/admin_ is your local $ORACLE_HOME/network/admin or the dir where you have your `tnsnames.ora`.
 
 In order to avoid the presence of password in your history commands i've intentionally omitted the password param so you will be prompted for it by sqlplus.
+
+### Locale and language settings
+I this version has NLS_LANG set to `SPANISH_SPAIN.WE8MSWIN1252` and session timezone to `Europe/Madrid`.
