@@ -12,10 +12,10 @@ Build it like this:
 
 Connect to a running Oracle database like this
 
-`docker run --it --rm -e USERNAME=username -e NET_SERVICE_NAME=XE -v /host/scripts/dir:/usr/workdir -v /host/oracle_home/network/admin:/usr/network/admin --net="host" carloscastillo/docker-sqlplus:spanish_spain`
+`docker run -it --rm -e USERNAME=username -e NET_SERVICE_NAME=XE -v /host/scripts/dir:/usr/workdir -v /host/oracle_home/network/admin:/usr/network/admin --net="host" carloscastillo/docker-sqlplus:spanish_spain`
 
 If the target database is inside another container you can link it:
-`docker run --it --rm --link database_container_name:name_of_database_host_in_tnsnames_dot_ora -e USERNAME=username -e NET_SERVICE_NAME=XE -v /host/scripts/dir:/usr/workdir -v /host/oracle_home/network/admin:/usr/network/admin carloscastillo/docker-sqlplus:spanish_spain`
+`docker run -it --rm --link database_container_name:name_of_database_host_in_tnsnames_dot_ora -e USERNAME=username -e NET_SERVICE_NAME=XE -v /host/scripts/dir:/usr/workdir -v /host/oracle_home/network/admin:/usr/network/admin carloscastillo/docker-sqlplus:spanish_spain`
 
 Where:
 * _username_ is your user name.
