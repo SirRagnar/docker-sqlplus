@@ -12,10 +12,10 @@ Build it like this:
 
 Connect to a running Oracle database like this
 
-`docker run --interactive --rm -e USERNAME=username -e NET_SERVICE_NAME=XE -v /host/scripts/dir:/usr/workdir -v /host/oracle_home/network/admin:/usr/network/admin --net="host" carloscastillo/docker-sqlplus`
+`docker run --it --rm -e USERNAME=username -e NET_SERVICE_NAME=XE -v /host/scripts/dir:/usr/workdir -v /host/oracle_home/network/admin:/usr/network/admin --net="host" carloscastillo/docker-sqlplus:spanish_spain`
 
 If the target database is inside another container you can link it:
-`docker run --interactive --rm --link database_container_name:name_of_database_host_in_tnsnames_dot_ora -e USERNAME=username -e NET_SERVICE_NAME=XE -v /host/scripts/dir:/usr/workdir -v /host/oracle_home/network/admin:/usr/network/admin carloscastillo/docker-sqlplus`
+`docker run --it --rm --link database_container_name:name_of_database_host_in_tnsnames_dot_ora -e USERNAME=username -e NET_SERVICE_NAME=XE -v /host/scripts/dir:/usr/workdir -v /host/oracle_home/network/admin:/usr/network/admin carloscastillo/docker-sqlplus:spanish_spain`
 
 Where:
 * _username_ is your user name.
@@ -26,4 +26,4 @@ Where:
 In order to avoid the presence of password in your history commands i've intentionally omitted the password param so you will be prompted for it by sqlplus.
 
 ### Locale and language settings
-I this version has NLS_LANG set to `SPANISH_SPAIN.WE8MSWIN1252` and session timezone to `Europe/Madrid`.
+This version has NLS_LANG setted to `SPANISH_SPAIN.WE8MSWIN1252` and session timezone to `Europe/Madrid`.
